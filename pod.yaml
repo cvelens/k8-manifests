@@ -1,31 +1,32 @@
+---
 apiVersion: v1
 kind: Pod
 metadata:
   name: caddy
   labels:
-   name: static-site
+    name: static-site
   namespace: static-site
 spec:
   containers:
-  - name: caddy
-    image: chlokesh1306/lokesh:latest
-    startupProbe:
-     httpGet:
-      path: /index.html
-      port: 8080
-     failureThreshold: 3
-     periodSeconds: 5
-    livenessProbe:
-     httpGet:
-      path: /index.html
-      port: 8080
-     initialDelaySeconds: 3
-     periodSeconds: 3
-    readinessProbe:
-     httpGet:
-      path: /index.html
-      port: 8080
-     initialDelaySeconds: 3
-     periodSeconds: 3
+    - name: caddy
+      image: chlokesh1306/lokesh:latest
+      startupProbe:
+        httpGet:
+          path: /index.html
+          port: 8080
+        failureThreshold: 3
+        periodSeconds: 5
+      livenessProbe:
+        httpGet:
+          path: /index.html
+          port: 8080
+        initialDelaySeconds: 3
+        periodSeconds: 3
+      readinessProbe:
+        httpGet:
+          path: /index.html
+          port: 8080
+        initialDelaySeconds: 3
+        periodSeconds: 3
   imagePullSecrets:
-   - name: docker
+    - name: docker
