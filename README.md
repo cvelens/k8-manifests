@@ -53,3 +53,19 @@ kubectl apply -f service.yaml
 * **Readiness Probe**: Checks if the static site is ready to serve traffic at `/index.html` on port 8080. It has an initial delay of 3 seconds and runs every 3 seconds.
 
 > Note: The `secret.yaml` file contains base64 encoded Docker registry credentials. Make sure to update the credentials with your own before deploying.
+
+## GitHub Actions Workflow
+
+This repository includes a GitHub Actions workflow for linting YAML files. The workflow is defined in `.github/workflows/lint.yml` and performs the following steps:
+
+1. Triggers the workflow on pull requests to the `main` branch or manually using `workflow_dispatch`.
+2. Checks out the repository using `actions/checkout@v2`.
+3. Sets up Python using `actions/setup-python@v2`.
+4. Installs the `yamllint` package using `pip`.
+5. Lints the YAML files in the repository using `yamllint`.
+
+The workflow ensures that the YAML files in the repository adhere to the specified linting rules and helps maintain code quality.
+
+## Note
+
+The `secret.yaml` file contains base64 encoded Docker registry credentials. Make sure to update the credentials with your own before deploying.
