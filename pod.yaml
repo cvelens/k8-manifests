@@ -10,22 +10,34 @@ spec:
   containers:
     - name: caddy
       image: chlokesh1306/lokesh:latest
+      env:
+        - name: CADDY_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ports
+              key: caddy_port
       startupProbe:
-        httpGet:
-          path: /index.html
-          port: 8080
+        exec:
+          command:
+            - /bin/sh
+            - -c
+            - wget -qO- http://localhost:$CADDY_PORT/index.html > /dev/null
         failureThreshold: 3
         periodSeconds: 5
       livenessProbe:
-        httpGet:
-          path: /index.html
-          port: 8080
+        exec:
+          command:
+            - /bin/sh
+            - -c
+            - wget -qO- http://localhost:$CADDY_PORT/index.html > /dev/null
         initialDelaySeconds: 3
         periodSeconds: 3
       readinessProbe:
-        httpGet:
-          path: /index.html
-          port: 8080
+        exec:
+          command:
+            - /bin/sh
+            - -c
+            - wget -qO- http://localhost:$CADDY_PORT/index.html > /dev/null
         initialDelaySeconds: 3
         periodSeconds: 3
   imagePullSecrets:
