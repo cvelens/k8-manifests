@@ -1,4 +1,4 @@
-# Static Site Deployment using Kubernetes for CR
+# Static Site Deployment using Kubernetes for CR1
 
 This repository contains Kubernetes manifests for deploying a static website using Caddy web server.
 
