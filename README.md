@@ -1,4 +1,4 @@
-# Static Site Deployment using Kubernetes for CR1
+# Static Site Deployment using Kubernetes (Testing)
 
 This repository contains Kubernetes manifests for deploying a static website using Caddy web server.
 
@@ -13,8 +13,8 @@ This repository contains Kubernetes manifests for deploying a static website usi
 1. Clone the repository:
 
   ```
-  git clone https://github.com/your-username/static-site.git
-  cd static-site
+  git clone https://github.com/cvelens/k8-manifests.git
+  cd k8-manifests
   ```
 
 2. Clone the repository:
@@ -65,7 +65,3 @@ This repository includes a GitHub Actions workflow for linting YAML files. The w
 5. Lints the YAML files in the repository using `yamllint`.
 
 The workflow ensures that the YAML files in the repository adhere to the specified linting rules and helps maintain code quality.
-
-## Note
-
-The `secret.yaml` file contains base64 encoded Docker registry credentials. Make sure to update the credentials with your own before deploying.
